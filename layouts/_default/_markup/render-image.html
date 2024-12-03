@@ -18,6 +18,7 @@
       </video>
       </figure>
     {{- else -}}
+    {{ $img := $img.Process "webp" }}
       <img loading="lazy" src="{{ $img.RelPermalink }}" type="" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}" {{ end }} />
     {{- end -}}
   {{- else -}}
