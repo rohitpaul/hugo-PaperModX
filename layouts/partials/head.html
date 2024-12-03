@@ -37,6 +37,17 @@
 <meta name="msvalidate.01" content="{{ site.Params.analytics.bingsiteVerificationTag }}">
 {{- end }}
 
+{{- with .Site.Params.umami -}}
+  {{- if and .enabled .website_id .tracker_url -}}
+    <script async defer 
+      data-website-id="{{ .website_id }}" 
+      src="{{ .tracker_url }}"
+      {{- with .domains }} data-domains="{{ . }}"{{ end }}>
+    </script>
+  {{- end -}}
+{{- end -}}
+
+
 {{- /* Styles */}}
 {{- $theme_vars := (resources.Get "css/core/theme-vars.css") }}
 {{- $reset := (resources.Get "css/core/reset.css") }}
